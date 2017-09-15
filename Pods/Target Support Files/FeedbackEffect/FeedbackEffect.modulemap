@@ -1,0 +1,6 @@
+framework module FeedbackEffect {
+  umbrella header "FeedbackEffect-umbrella.h"
+
+  export *
+  module * { export * }
+}

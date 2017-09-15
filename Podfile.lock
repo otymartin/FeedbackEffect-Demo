@@ -1,0 +1,12 @@
+PODS:
+  - FeedbackEffect (1.1)
+
+DEPENDENCIES:
+  - FeedbackEffect
+
+SPEC CHECKSUMS:
+  FeedbackEffect: 9e8a00649461cf88329a8f46fda39dc8fda35c22
+
+PODFILE CHECKSUM: aa4baf0c26dcc57196300553b64015053d7daa84
+
+COCOAPODS: 1.3.1
