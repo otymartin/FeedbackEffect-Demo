@@ -17,11 +17,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var titles = ["Message Tones", "Sound Effects"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.feedbackEffectPicker = UIPickerView()
-        self.feedbackEffectPicker.frame = CGRect(x: 0, y: 64, width: self.view.bounds.width, height: self.view.bounds.height - 64)
+        self.feedbackEffectPicker = UIPickerView(frame:  CGRect(x: 0, y: 64, width: self.view.bounds.width, height: self.view.bounds.height - 64))
         self.feedbackEffectPicker.delegate = self
         self.feedbackEffectPicker.dataSource = self
         self.view.addSubview(self.feedbackEffectPicker)
@@ -44,9 +42,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
-            return self.messageTones[row].name
+            return String(self.messageTones[row].rawValue).appending(" \(self.messageTones[row].name)")
         default:
-            return self.soundEffects[row].name
+            return String(self.soundEffects[row].rawValue).appending(" \(self.soundEffects[row].name)")
         }
     }
     
@@ -68,10 +66,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     private func addComponentLabels() {
         let labelWidth = self.feedbackEffectPicker.frame.width / CGFloat(self.feedbackEffectPicker.numberOfComponents)
         for index in 0..<self.titles.count {
-            let label: UILabel = UILabel.init(frame: CGRect(x: self.feedbackEffectPicker.frame.origin.x + labelWidth * CGFloat(index), y: 30, width: labelWidth, height: 20))
+            let label: UILabel = UILabel.init(frame: CGRect(x: self.feedbackEffectPicker.frame.origin.x + labelWidth * CGFloat(index), y: 0, width: labelWidth, height: 20))
             label.text = self.titles[index]
             label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium)
+            label.textColor = .gray
+            label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
             self.feedbackEffectPicker.addSubview(label)
         }
     }
